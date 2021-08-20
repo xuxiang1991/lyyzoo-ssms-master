@@ -27,7 +27,7 @@ public class BaseDaoImpl implements BaseDaoInter{
 		QueryRunner qr = new QueryRunner(MysqlTool.getDataSource());
 		List<Object> list = new LinkedList<>();
 		try {
-			list = qr.query(sql, new BeanListHandler(type));
+			list = (List<Object>) qr.query(sql, new BeanListHandler(type));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -38,7 +38,7 @@ public class BaseDaoImpl implements BaseDaoInter{
 		QueryRunner qr = new QueryRunner(MysqlTool.getDataSource());
 		List<Object> list = new LinkedList<>();
 		try {
-			list = qr.query(sql, new BeanListHandler(type), param);
+			list = (List<Object>) qr.query(sql, new BeanListHandler(type), param);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,7 @@ public class BaseDaoImpl implements BaseDaoInter{
 		QueryRunner qr = new QueryRunner();
 		List<Object> list = new LinkedList<>();
 		try {
-			list = qr.query(conn, sql, new BeanListHandler(type));
+			list = (List<Object>) qr.query(conn, sql, new BeanListHandler(type));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -68,7 +68,7 @@ public class BaseDaoImpl implements BaseDaoInter{
 		QueryRunner qr = new QueryRunner();
 		List<Object> list = new LinkedList<>();
 		try {
-			list = qr.query(conn, sql, new BeanListHandler(type), param);
+			list = (List<Object>) qr.query(conn, sql, new BeanListHandler(type), param);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -109,7 +109,7 @@ public class BaseDaoImpl implements BaseDaoInter{
 		QueryRunner qr = new QueryRunner(MysqlTool.getDataSource());
 		Long count = 0L;
 		try {
-			count = qr.query(sql, new ScalarHandler());
+			count = (Long) qr.query(sql, new ScalarHandler());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -120,7 +120,7 @@ public class BaseDaoImpl implements BaseDaoInter{
 		QueryRunner qr = new QueryRunner(MysqlTool.getDataSource());
 		Long count = 0L;
 		try {
-			count = qr.query(sql, new ScalarHandler(), param);
+			count = (Long) qr.query(sql, new ScalarHandler(), param);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
